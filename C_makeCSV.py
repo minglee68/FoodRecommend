@@ -26,8 +26,12 @@ for id in list(uid.keys()):
     if uid[id] < 5:
         del uid[id]
 
+skip = 0
 count = 0
 for i in range(len(test_data)):
+    if skip < 200000:
+        skip += 1
+        continue
     if test_data[i][0] in uid:
         test_data[i][3] = 'q'
         count += 1
