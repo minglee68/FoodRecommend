@@ -1,2 +1,0 @@
-# MovieLens
-Movie Recommendation System
