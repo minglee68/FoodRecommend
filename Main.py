@@ -1,13 +1,13 @@
 import config_list
 import csv
-from MovieRatingData import MovieRatingData
+from FoodRatingData import FoodRatingData
 from Recommender import Recommender
 
 class Main:
 
     def __init__(self):
 
-        data = MovieRatingData()
+        data = FoodRatingData()
         ftrain = config_list.training
         ftest = config_list.testing
 

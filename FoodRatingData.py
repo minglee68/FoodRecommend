@@ -1,7 +1,7 @@
 import config_list
 import csv
 
-class MovieRatingData:
+class FoodRatingData:
     Baskets = {}
     numRatingsOfProducts = {}
     accRatingsOfProducts = {}
