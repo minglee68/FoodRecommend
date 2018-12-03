@@ -15,21 +15,35 @@ with open('Reviews.csv', mode='r') as review_file:
             data.append([row[2], row[1], float(row[6])])
             test_data.append([row[2], row[1], float(row[6]), 'c'])
             line_count += 1
+
 uid = {}
+pid = {}
 for one in data:
     if one[0] in uid:
         uid[one[0]] += 1
     else:
         uid[one[0]] = 1
 
+count = 0
 for id in list(uid.keys()):
     if uid[id] < 5:
         del uid[id]
+        continue
+    if uid[id] > 100:
+        del uid[id]
+        continue
+
+for one in data:
+    if one[0] in uid:
+        if one[1] not in pid:
+            pid[one[1]] = 0
+        pid[one[1]] += 1
+print(len(pid))
 
 skip = 0
 count = 0
 for i in range(len(test_data)):
-    if skip < 200000:
+    if skip < 100000:
         skip += 1
         continue
     if test_data[i][0] in uid:

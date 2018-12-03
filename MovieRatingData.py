@@ -8,10 +8,12 @@ class MovieRatingData:
 
     like_threshold = 0.0
     outlier_threshold = 0
+    outlier_threshold_small = 0
 
     def __init__(self):
         self.like_threshold = config_list.like_threshold
         self.outlier_threshold = config_list.outlier_threshold
+        self.outlier_threshold_small = config_list.outlier_threshold_small
 
     def load(self, ftrain):
         with open(ftrain, mode='r') as train_file:
@@ -37,7 +39,10 @@ class MovieRatingData:
         outliers = []
         for userId in self.Baskets:
             basket = self.Baskets[userId]
-            if len(basket) < self.outlier_threshold:
+            if len(basket) > self.outlier_threshold:
+                outliers.append(userId)
+                continue
+            if len(basket) < self.outlier_threshold_small:
                 outliers.append(userId)
 
         for userId in outliers:
